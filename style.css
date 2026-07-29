@@ -1,0 +1,31 @@
+body{
+    font-family:'Poppins',sans-serif;
+}
+
+.note{
+    font-family:'Patrick Hand',cursive;
+    transition:.3s;
+}
+
+.note:hover{
+    transform:scale(1.05) rotate(0deg);
+    z-index:10;
+}
+
+.shadow-note{
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.12),
+        0 8px 12px rgba(0,0,0,.08);
+}
+
+.pin{
+    width:16px;
+    height:16px;
+    background:#ff5c8d;
+    border-radius:50%;
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 3px 6px rgba(0,0,0,.25);
+}
