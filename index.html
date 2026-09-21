@@ -7,278 +7,297 @@
     <title>Seu Mural</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ffd1dc, #ffb6c1, #ffe4e1, #fff0f5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .font-hand {
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.3);
+        }
+
+        /* Partículas flutuantes */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s infinite ease-in-out;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .note-hover-effect {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .note-hover-effect:hover {
+            transform: scale(1.05) rotate(0deg) translateY(-8px) !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            z-index: 50;
+        }
+
+        .pin-emoji {
+            filter: drop-shadow(0 4px 3px rgba(0,0,0,0.15));
+        }
+    </style>
 </head>
 
-<body class="min-h-screen bg-pink-100 py-10">
+<body class="min-h-screen py-10 relative">
 
-    <div class="max-w-7xl mx-auto px-6">
+    <!-- Elementos decorativos flutuantes no fundo -->
+    <div class="particle text-4xl" style="top: 10%; left: 5%; animation-delay: 0s;">🌸</div>
+    <div class="particle text-5xl" style="top: 20%; right: 10%; animation-delay: 1s;">✨</div>
+    <div class="particle text-3xl" style="top: 50%; left: 8%; animation-delay: 2s;">💖</div>
+    <div class="particle text-4xl" style="top: 70%; right: 5%; animation-delay: 0.5s;">🎀</div>
+    <div class="particle text-5xl" style="top: 85%; left: 15%; animation-delay: 1.5s;">🌸</div>
+    <div class="particle text-3xl" style="top: 40%; right: 15%; animation-delay: 2.5s;">✨</div>
 
-        <div class="text-center mb-10">
-            <h1 class="text-5xl font-bold text-pink-500">
-                Seu Mural
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+
+        <div class="text-center mb-12">
+            <h1 class="text-6xl font-extrabold text-pink-500 drop-shadow-sm font-hand tracking-wide">
+                Seu Mural 💖
             </h1>
-
-            <p class="text-pink-600 mt-2">
-                Um lugar que todos os dias, tera uma mensagem para voce meu amor.
+            <p class="text-pink-600/80 mt-3 text-lg font-medium">
+                Um lugar que todos os dias, terá uma mensagem para você meu amor. ✨
             </p>
         </div>
 
-        <!-- Mural -->
-        <div class="bg-[#d8a66c] border-[18px] border-[#8b5a32] rounded-3xl p-10 shadow-2xl">
+        <!-- Mural (Glassmorphism) -->
+        <div class="glass-panel rounded-[2.5rem] p-8 sm:p-12 relative">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-10">
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <div class="relative note bg-white rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 29/07</h2>
-                    <p class="text-gray-700">Bom dia meu amor, no momento em q eu escrevo isso voce nem acordou ainda,
-                        mas saiba que eu vou fazer algo por nós, mudar por nós, eu te amo mais q tudo nesse mundo, me
-                        perdoe por qm eu estive sendo, mas vou melhorar, começando por aqui.</p>
+                <!-- Nota 1 -->
+                <div class="relative bg-pink-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-3 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-pink-600 mb-3 font-bold mt-2 text-center">29/07</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Bom dia meu amor, no momento em q eu escrevo isso voce nem acordou ainda, mas saiba que eu vou fazer algo por nós, mudar por nós, eu te amo mais q tudo nesse mundo, me perdoe por qm eu estive sendo, mas vou melhorar, começando por aqui.</p>
                 </div>
 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[3deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 30/07</h2>
-                    <p class="text-gray-700">Bom dia meu amor, estou escrevendo esta mensagem antes de nos encontrarmos meu bem,
-                        eu to estou com muitas saudades de voce minha princesa, quero estar do seu lado o dia todinho, para assistirmos tpn coladinhos, comendo algo gostoso,
-                        e se estufando de amor meu bem, eu quero isso para todos os nossos dias bebe,
-                        eu te amo mais q qualquer coisa minha bebezinha, voce é a mulher da minha vida</p>
+                <!-- Nota 2 -->
+                <div class="relative bg-blue-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-2 min-h-[240px] font-hand text-lg border border-blue-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-blue-600 mb-3 font-bold mt-2 text-center">30/07</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Bom dia meu amor, estou escrevendo esta mensagem antes de nos encontrarmos meu bem, eu to estou com muitas saudades de voce minha princesa, quero estar do seu lado o dia todinho, para assistirmos tpn coladinhos, comendo algo gostoso, e se estufando de amor meu bem, eu quero isso para todos os nossos dias bebe, eu te amo mais q qualquer coisa minha bebezinha, voce é a mulher da minha vida</p>
                 </div>
 
-                <div class="relative note bg-white rounded-xl p-6 shadow-note rotate-[-2deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 31/07</h2>
-                    <p class="text-gray-700">Bom dia meu amorrr, hoje estou longe, estou aqui no senai, mas com mais saudades doq tudo, eu queria estar ai com voce nesse momento, dormindo, mas infelizmente to nesse lugar,
-                    mas logo estarei com voce novamente, eu morro de saudades todos os momentos q me encontro aqui, so queria seu abraço que esquenta meu coração e me nutri de amor todos os dias e momentos, eu te amo mais que tudo nesse universo,
-                    vamos conquistar o mundo meu amor.</p>
+                <!-- Nota 3 -->
+                <div class="relative bg-purple-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-2 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-purple-600 mb-3 font-bold mt-2 text-center">31/07</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Bom dia meu amorrr, hoje estou longe, estou aqui no senai, mas com mais saudades doq tudo, eu queria estar ai com voce nesse momento, dormindo, mas infelizmente to nesse lugar, mas logo estarei com voce novamente, eu morro de saudades todos os momentos q me encontro aqui, so queria seu abraço que esquenta meu coração e me nutri de amor todos os dias e momentos, eu te amo mais que tudo nesse universo, vamos conquistar o mundo meu amor.</p>
                 </div>
 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 01/08</h2>
-                    <p class="text-gray-700">Bom dia meu amor, aqui começa o mes de agosto, que para nós dois, é um mes especial, e eu digo nois dois, pq no dia 18 de agosto de 2025 eu pude te dar algo q quero transformar em algo maior e melhor, a nossa aliança,
-                    quero poder te dar uma verdadeira aliança digna ainda meu amor, voce merece mais doq tudo meu bem, sem contar de quando casarmos, des do começo eu sempre quis te dar um anel lindo e perfeito, infelizmente por minha condição monetaria no momento,
-                    isso fica dificil, mas n vai me impedir de te dar, pode demorar um pouco, mas eu vou. Eu te amo mais doq tudo meu amor, e hoje ainda vou ir ai te ver, ver nosso filho, te encher de carinhos e beijos, te amar com antes, na sua casinha,
-                    assistindo e jogando algo, de verdade meu amor, n tenho como desejar algo melhor q isso, voce é o puro paraiso, eu amo amar voce minha princesa.</p>
+                <!-- Nota 4 -->
+                <div class="relative bg-yellow-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-3 min-h-[240px] font-hand text-lg border border-yellow-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-yellow-600 mb-3 font-bold mt-2 text-center">01/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Bom dia meu amor, aqui começa o mes de agosto, que para nós dois, é um mes especial, e eu digo nois dois, pq no dia 18 de agosto de 2025 eu pude te dar algo q quero transformar em algo maior e melhor, a nossa aliança, quero poder te dar uma verdadeira aliança digna ainda meu amor, voce merece mais doq tudo meu bem, sem contar de quando casarmos, des do começo eu sempre quis te dar um anel lindo e perfeito, infelizmente por minha condição monetaria no momento, isso fica dificil, mas n vai me impedir de te dar, pode demorar um pouco, mas eu vou. Eu te amo mais doq tudo meu amor, e hoje ainda vou ir ai te ver, ver nosso filho, te encher de carinhos e beijos, te amar com antes, na sua casinha, assistindo e jogando algo, de verdade meu amor, n n tenho como desejar algo melhor q isso, voce é o puro paraiso, eu amo amar voce minha princesa.</p>
                 </div>
 
-                <div class="relative note bg-white rounded-xl p-6 shadow-note rotate-[-5deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 02/08</h2>
-                    <p class="text-gray-700">Dois dias, me desculpe por minha incapacidade de agir de sozinho, ter me pilhado em momentos de conforto sem pensar no seu lado foi terrivel, e n vai mais acontecer, eu fico enojado com minha atitude, e acho q oq aocnteceu
-                    foi justo, sei q vc n gosta, mas faz parte, ja foi, e isso evitara de fato, q coisas como essas prossigam acontecendo, eu te amo meu amor, eu amo voce mais q tudo nesse mundo, e faria de tudo para ver esse rostinho lindo sorrindo, fui insuficiente demais,
-                    por tanto agora tenho q me redimir como pessoa a voce, e para mim mesmo. essa semana vou ir bastante ai meu bem, e vai ser diferente, eu te garanto bebe. mwaaaa</p>
+                <!-- Nota 5 -->
+                <div class="relative bg-pink-50 rounded-2xl p-6 shadow-md note-hover-effect -rotate-3 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-pink-500 mb-3 font-bold mt-2 text-center">02/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Dois dias, me desculpe por minha incapacidade de agir de sozinho, ter me pilhado em momentos de conforto sem pensar no seu lado foi terrivel, e n vai mais acontecer, eu fico enojado com minha atitude, e acho q oq aocnteceu foi justo, sei q vc n gosta, mas faz parte, ja foi, e isso evitara de fato, q coisas como essas prossigam acontecendo, eu te amo meu amor, eu amo voce mais q tudo nesse mundo, e faria de tudo para ver esse rostinho lindo sorrindo, fui insuficiente demais, por tanto agora tenho q me redimir como pessoa a voce, e para mim mesmo. essa semana vou ir bastante ai meu bem, e vai ser diferente, eu te garanto bebe. mwaaaa</p>
                 </div>
 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[2deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 03/08</h2>
-                    <p class="text-gray-700">Boa tarde vossa alteza, venho me aqui para me servir a voce, dizer a voce algumas coisas, primeiro, venho te desejar um otimo dia meu amor, eu te amo mais doq qualquer coisa neste universo de forma unanime,
-                    sendo voce, a coisa mais preciosa da minha vida fofurinha. Segundo, eu estou com uma enorme saudade de voce meu amor, quero apenas ficar no seu abraço por horas, deitar em voce, sentir seu cheiro, eu quero estar com voce, quero ver filmes com voce
-                    mesmo q bobos, eu quero vivenciar esse tipo de coisa com voce. E por fim, q esta fase de recuperação passe logo para eu n percisar ficar toda hr trocando gaze e tendo q ver essas coisas, quero só literalmente relaxar e ficar com voce, sem outras demais
-                    preocupações no momento em q eu me deito com voce, eu te amo demais meu amor.</p>
+                <!-- Nota 6 -->
+                <div class="relative bg-green-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-1 min-h-[240px] font-hand text-lg border border-green-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-green-600 mb-3 font-bold mt-2 text-center">03/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Boa tarde vossa alteza, venho me aqui para me servir a voce, dizer a voce algumas coisas, primeiro, venho te desejar um otimo dia meu amor, eu te amo mais doq qualquer coisa neste universo de forma unanime, sendo voce, a coisa mais preciosa da minha vida fofurinha. Segundo, eu estou com uma enorme saudade de voce meu amor, quero apenas ficar no seu abraço por horas, deitar em voce, sentir seu cheiro, eu quero estar com voce, quero ver filmes com voce mesmo q bobos, eu quero vivenciar esse tipo de coisa com voce. E por fim, q esta fase de recuperação passe logo para eu n percisar ficar toda hr trocando gaze e tendo q ver essas coisas, quero só literalmente relaxar e ficar com voce, sem outras demais preocupações no momento em q eu me deito com voce, eu te amo demais meu amor.</p>
                 </div>
 
-                <div class="relative note bg-white rounded-xl p-6 shadow-note rotate-[5deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 04/08</h2>
-                    <p class="text-gray-700">Bom dia dorminhocaa, estou no senai morrendo de saudades de voce meu amor, nao consigo existir sem voce na minha vida, vc é a bateria do meu controle, nao quero viver sem voce, e jamais vou, eu te amo muito meu amorr,
-                    quero te ver logo meu bemm, amanha vou ir correndo te encher de beijoss, sentir seu toque, cheirar seu cabelo, te encarar nos olhos e dizer o quanto eu te amo, e mesmo assim nunca vou poder expressar verdadeiramente o quanto eu te amo,
-                    pq é incontavel neste mundo. Quero sair do senai pra ir direto ai, assim como antigamente, eu te amo muito meu amor, "Carissime, te plus quam quicquam aliud in vita amo; te in matrimonium ducere volo."
-                    (Meu amor, eu te amo mais do que qualquer outra coisa na vida; quero me casar com você.)</p>
+                <!-- Nota 7 -->
+                <div class="relative bg-blue-50 rounded-2xl p-6 shadow-md note-hover-effect -rotate-2 min-h-[240px] font-hand text-lg border border-blue-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-blue-500 mb-3 font-bold mt-2 text-center">04/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Bom dia dorminhocaa, estou no senai morrendo de saudades de voce meu amor, nao consigo existir sem voce na minha vida, vc é a bateria do meu controle, nao quero viver sem voce, e jamais vou, eu te amo muito meu amorr, quero te ver logo meu bemm, amanha vou ir correndo te encher de beijoss, sentir seu toque, cheirar seu cabelo, te encarar nos olhos e dizer o quanto eu te amo, e mesmo assim nunca vou poder expressar verdadeiramente o quanto eu te amo, pq é incontavel neste mundo. Quero sair do senai pra ir direto ai, assim como antigamente, eu te amo muito meu amor, "Carissime, te plus quam quicquam aliud in vita amo; te in matrimonium ducere volo." (Meu amor, eu te amo mais do que qualquer outra coisa na vida; quero me casar com você.)</p>
                 </div>
 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-3deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 05/08</h2>
-                    <p class="text-gray-700">BOA NOITE MEU AMORR, estou escrevendo isso após chegar em casa do nosso dia juntoss, e queria dizer q eu amei tudo hoje, amei o filme, amei o momento com voce, amei jogar com voce (msm q eu seja um pouco competitivo, desculpa).
-                    Porem não muda a diversão extrema q eu tive com voce hoje meu amor, me senti acolhido pelo seu abraço, morri de saudades da sua pipoca, e me deliciei ate o ultimo momento, eu te amo demais meu amorr, quero mais dias assim meu bem, quero grudar em voce
-                    e n soltar nunca mais, quero sair com voce tbm, PRECISO TRABALHAR SOCORRO, mas esse dia foi feito por voce meu amor, voce melhorou tudo possivel.</p>
+                <!-- Nota 8 -->
+                <div class="relative bg-purple-50 rounded-2xl p-6 shadow-md note-hover-effect rotate-2 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-purple-500 mb-3 font-bold mt-2 text-center">05/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOA NOITE MEU AMORR, estou escrevendo isso após chegar em casa do nosso dia juntoss, e queria dizer q eu amei tudo hoje, amei o filme, amei o momento com voce, amei jogar com voce (msm q eu seja um pouco competitivo, desculpa). Porem não muda a diversão extrema q eu tive com voce hoje meu amor, me senti acolhido pelo seu abraço, morri de saudades da sua pipoca, e me deliciei ate o ultimo momento, eu te amo demais meu amorr, quero mais dias assim meu bem, quero grudar em voce e n soltar nunca mais, quero sair com voce tbm, PRECISO TRABALHAR SOCORRO, mas esse dia foi feito por voce meu amor, voce melhorou tudo possivel.</p>
                 </div>
 
-                <div class="relative note bg-white rounded-xl p-6 shadow-note rotate-[2deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 06/08</h2>
-                    <p class="text-gray-700">BOA NOITE MEU AMORRRRRRR, acabei de chegar da sua casinhaa, e ja to morrendo de saudades meu amorrr, dormir com voce sempre é uma maravilhosa meu amor, dormir cheirando voce, n tenho nem palavras pra descrever,
-                    vc tem um cheirinho perfeito q me faz me apaixonar por voce a cada segundo, sem contar nosso almoço hoje, foi muito gostoso, a gente conversando a rodo, comendo em paz, só nós dois, pacificamente, eu te amo meu amor, isso vai acontecer muito ainda amor,
-                    quero te levar pra sair toda a semana quando eu tiver dinheiroo, te prestigiar é a coisa que eu mais desejo, minha deusa, minha esposa trofeu, perfeita. Eu te amo mais que tudo e vou casar com voce.</p>
+                <!-- Nota 9 -->
+                <div class="relative bg-pink-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-1 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-pink-600 mb-3 font-bold mt-2 text-center">06/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOA NOITE MEU AMORRRRRRR, acabei de chegar da sua casinhaa, e ja to morrendo de saudades meu amorrr, dormir com voce sempre é uma maravilhosa meu amor, dormir cheirando voce, n tenho nem palavras pra descrever, vc tem um cheirinho perfeito q me faz me apaixonar por voce a cada segundo, sem contar nosso almoço hoje, foi muito gostoso, a gente conversando a rodo, comendo em paz, só nós dois, pacificamente, eu te amo meu amor, isso vai acontecer muito ainda amor, quero te levar pra sair toda a semana quando eu tiver dinheiroo, te prestigiar é a coisa que eu mais desejo, minha deusa, minha esposa trofeu, perfeita. Eu te amo mais que tudo e vou casar com voce.</p>
                 </div>
 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-2deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 07/08</h2>
-                    <p class="text-gray-700">BOM DIA MEU AMORRRR, estou aqui no senai te escrevendo issoo, eu te amo muito meu amor, muito obrigada por estar ao meu lado em todos os momentos, não conseguiria continuar sem voce meu amor, voce me completa inteiramente bebe,
-                    quero estar do seu lado até a morte minha anjinha. Acontece de eu ser meio burro ou bobo as vezes, desorganizado ou aparente desinteressado em estudar, mas acontece de eu ser mt desleixado assim, eu n sou totalmente burro ou inutil como vc mts vezes pensa meu amor,
-                    eu vou ser oq vc deseja q eu seja, não só por vc, mas por mim, por nosso futuro, tenho q balancear esse lazer, só peço cuidado nas palavras bebe KAKAKAK, as vezes vc faz eu pensar q tudo q eu te falar vc vai responder com raiva ou coisa do tipo, então pra eu me abrir mais
-                    eu peço q vc seja só um pouco mais "calma" nesses momentos, mas eu entendo totalmente o pq vc age dessa forma, n é sua culpa meu amor. Eu te amo meu bem, eu te amo mais que tudoo.</p>
+                <!-- Nota 10 -->
+                <div class="relative bg-yellow-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-3 min-h-[240px] font-hand text-lg border border-yellow-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-yellow-600 mb-3 font-bold mt-2 text-center">07/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA MEU AMORRRR, estou aqui no senai te escrevendo issoo, eu te amo muito meu amor, muito obrigada por estar ao meu lado em todos os momentos, não conseguiria continuar sem voce meu amor, voce me completa inteiramente bebe, quero estar do seu lado até a morte minha anjinha. Acontece de eu ser meio burro ou bobo as vezes, desorganizado ou aparente desinteressado em estudar, mas acontece de eu ser mt desleixado assim, eu n sou totalmente burro ou inutil como vc mts vezes pensa meu amor, eu vou ser oq vc deseja q eu seja, não só por vc, mas por mim, por nosso futuro, tenho q balancear esse lazer, só peço cuidado nas palavras bebe KAKAKAK, as vezes vc faz eu pensar q tudo q eu te falar vc vai responder com raiva ou coisa do tipo, então pra eu me abrir mais eu peço q vc seja só um pouco mais "calma" nesses momentos, mas eu entendo totalmente o pq vc age dessa forma, n é sua culpa meu amor. Eu te amo meu bem, eu te amo mais que tudoo.</p>
                 </div>
 
-                <div class="relative note bg-white rounded-xl p-6 shadow-note rotate-[4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 10/08</h2>
-                    <p class="text-gray-700">DOIS DIAS SEM MENSAGEM??!?!?!?! JAMAIS VOU DEIXAR ISSO ACONTECER NOVAMENTE!!! MINHA ESPOSA SEMPRE TERA SEUS RECADINHOS!! Enfim meu amorr, hoje voce começa no seu trabalhooo, eu fico de verdade muito feliz por voce,
-                    é um alivio ver q seu esforço deu certo e vc ta no verdadeiro caminho certo, eu me inspiro em voce meu amor, voce corre atras doq quer e faz acontecer, voce é muito forte meu amor, de verdade, voce é minha inspiração para seguir vivo, eu te amo mais que tudo meu amor.
-                    Hoje é o primeiro de muitos dias nesse hospital, e como estagio, logo menos voce vai ta sendo uma enfermeira de verdade, voce é foda meu amor, voce merece o mundo, e juntos vamos conquistalo, temos muita coisa pela frente minha deusa. É apenas o começo bebe.</p>
+                <!-- Nota 11 -->
+                <div class="relative bg-blue-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-3 min-h-[240px] font-hand text-lg border border-blue-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-blue-600 mb-3 font-bold mt-2 text-center">10/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">DOIS DIAS SEM MENSAGEM??!?!?!?! JAMAIS VOU DEIXAR ISSO ACONTECER NOVAMENTE!!! MINHA ESPOSA SEMPRE TERA SEUS RECADINHOS!! Enfim meu amorr, hoje voce começa no seu trabalhooo, eu fico de verdade muito feliz por voce, é um alivio ver q seu esforço deu certo e vc ta no verdadeira caminho certo, eu me inspiro em voce meu amor, voce corre atras doq quer e faz acontecer, voce é muito forte meu amor, de verdade, voce é minha inspiração para seguir vivo, eu te amo mais que tudo meu amor. Hoje é o primeiro de muitos dias nesse hospital, e como estagio, logo menos voce vai ta sendo uma enfermeira de verdade, voce é foda meu amor, voce merece o mundo, e juntos vamos conquistalo, temos muita coisa pela frente minha deusa. É apenas o começo bebe.</p>
                 </div>
 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 11/08</h2>
-                    <p class="text-gray-700">BOM DIA/TARDE MEU AMORRR, EU TO COM MT SDDS AMORR, N AGUENTO MAIS ESSE LUGAR, SÓ ALMEJO SEU ABRAÇO MINHA VIDA, ESTAR GRUDADO EM VOCE É TUDO Q EU PRECISO, AMANHA IREI CORRENDO PRA SUA HOUSE BEBE, TAVA PENSANDO EM PEDIR ALGO
-                        LA PRA GENTE COMER, EU PEDIRIA MONEY E JA PEDIRIA A FOOD ANTES DE VOCE CHEGAR, IGUAL ANTIGAMENTE, E DAI A GENTE VIA UM MASTERCHEF BEBEE, DAI IRIA DE VC SE QUISSESE CONTRIBUIRR COM O MONEYY, PQ FAZ TEMPO Q A GENTE N COME ESSAS COISAS JUNTOO.
-                    Enfim bebee, Queria dizer q eu sinto muito sua falta, n consigo viver direito sem voce, só quero voce ate o fim, custe oq custar meu amorr, tenha um dia maravilhosoooo fofurinhaa. MWAAAAAA</p>
+                <!-- Nota 12 -->
+                <div class="relative bg-purple-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-2 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-purple-600 mb-3 font-bold mt-2 text-center">11/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA/TARDE MEU AMORRR, EU TO COM MT SDDS AMORR, N AGUENTO MAIS ESSE LUGAR, SÓ ALMEJO SEU ABRAÇO MINHA VIDA, ESTAR GRUDADO EM VOCE É TUDO Q EU PRECISO, AMANHA IREI CORRENDO PRA SUA HOUSE BEBE, TAVA PENSANDO EM PEDIR ALGO LA PRA GENTE COMER, EU PEDIRIA MONEY E JA PEDIRIA A FOOD ANTES DE VOCE CHEGAR, IGUAL ANTIGAMENTE, E DAI A GENTE VIA UM MASTERCHEF BEBEE, DAI IRIA DE VC SE QUISSESE CONTRIBUIRR COM O MONEYY, PQ FAZ TEMPO Q A GENTE N COME ESSAS COISAS JUNTOO. Enfim bebee, Queria dizer q eu sinto muito sua falta, n consigo viver direito sem voce, só quero voce ate o fim, custe oq custar meu amorr, tenha um dia maravilhosoooo fofurinhaa. MWAAAAAA</p>
+                </div>
+
+                <!-- Nota 13 -->
+                <div class="relative bg-pink-50 rounded-2xl p-6 shadow-md note-hover-effect -rotate-2 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-pink-500 mb-3 font-bold mt-2 text-center">13/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOA NOITE MEU AMORR, ACABEI DE CHEGAR EM CASA E N TENHO PALAVRAS PRA DESCREVER ESSES DAIS COM VOCEE, FOI MT GOSTOSOO, só hoje q tivemos um mini conflito mas foi resolvido, MAS DE RESTO FOI MT BOMM, ESTAMOS EM SINTONIA DNVV EU DIRIAA, E SEI Q ISSO VAI DURAR MUITOOOOO, PQ ESTAMOS BEMM AMORRR. Eu te amo mais q tudo meu amor, e quero q tudo sempre esteja na melhor fase possivel, temos baixas e temos almas, mas sempre estamos juntos, e o importante é termos um ao outro, voce siginifica tudo pra mim meu amor, vc me deixa completo, sem voce eu n consigo ser nada, eu quero viver o mundo com voce, quero ter uma vida ao seu lado, e nao ao lado de mais ngm, eu só preciso de voce ate a morte meu amor, espero q vc pense o msm, pq vou fazer de tudo para te ter ao meu lado para sempre bebe, MWA MWA LINDEZA EU TE AMO MAIS Q TUDO NESSE MUNDOO.</p>
+                </div>
+
+                <!-- Nota 14 -->
+                <div class="relative bg-green-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-1 min-h-[240px] font-hand text-lg border border-green-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-green-600 mb-3 font-bold mt-2 text-center">16/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOMMMM DIAAA MEU AMORRR, acabei de ligar o pc e vim atualizar o muralll amorzãooooo, enfim, EU AMEI ESSES ULTIMOS DIAS AMORRR, A GENTE FICOU COM MT TEMPO DE QUALIDADE E NEM DISCUTIMOS NEM NADA AMORRR, EU TE AMO DEMAISSSSS BEBEZONAA, QUERO JA DNV UM FIM DE SEMANA COMO ESSEEE. Por tanto bebe, eu queria dizer q msm sem brigarmos eu errei algumas vezes, tipo na hora q vc tava dirigindo, de ter ficado te barulhando quando tava dirigindo, mas enfim, me desculpa por todos os erros que eu cometi durante este tempo, espero q n tenha estragado o dia para voce, mas pra mim foi o melhor final de semana possivel meu amor, eu quero poder vivenciar isso sempre com voce, vivenciar momentos bons e ruins meu amor, construir nosso futuro a partir de qm realmente somos bebee, estou dedicado para construir um futuro bons pra gente, agr mais ainda me dedicando pra estudar e ser util meu amor. E tudo isso graças a voce meu amor, de fato a pessoa mais importante pra minha vida é você amor, voce me fez acordar pra vida e entender diversas coisas, e eu n quero te perder por nada meu bem, vivo em constante evolução ao seu lado, e quero fazer tudo isso dar frutos, pra eu cuidar de voce, amar voce, e viver tudo ao seu lado, vc é a minha familia amor, a nossa familia.</p>
+                </div>
+
+                <!-- Nota 15 -->
+                <div class="relative bg-yellow-50 rounded-2xl p-6 shadow-md note-hover-effect -rotate-3 min-h-[240px] font-hand text-lg border border-yellow-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-yellow-500 mb-3 font-bold mt-2 text-center">17/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">PARA FINALIZAR O DIA MEU AMOR, queria dizer q eu amei o dia de hoje minha bebezinhaa, amei a surpresa q vc me fezz, e me sinto cada vez mais amado amor, msm com discussoes bobas, a gente ainda mantem um ritmo bom, estamos rindo juntos, se amando de fato, msm com momentos assim n se ofuscamos, e creio q estamos em um bom balanço, e logo melhor ainda quando eu sarar completamente da cirurgia, falta pouco bebe, só mais 10 dias no momento q eu escrevo, mas logo 9, eu te amo mais q tudo meu amor, queria deixar claro q nunca vou te abandonar, nunca mesmo, voce é tudo para mim e farei de tudo para conseguirmos tudo q sonhamos e queremos conquistas, só me vejo com vida, estando ao seu lado. MWAAA EU TE AMO DEMAISS.</p>
+                </div>
+
+                <!-- Nota 16 -->
+                <div class="relative bg-purple-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-3 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-purple-600 mb-3 font-bold mt-2 text-center">18/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA MEU AMORRR, TO AQUI NO SENAI TE ESCREVENDO ESSA MENSAGEM MORRENDO DE SDDS BEBEEE, QUERIA TE BUSCAR PRA TE ENCHER DE CARINHO AMORR, QUERO Q VC DESCANSE MUITAOO BEBEE, EU TE AMO MAIS Q TUDOO. Enfim bebeee, queria dizer q eu sinto muito sua falta meu amor, todos os dias, todos os momentos, queria poder viver com voce, quero trabalhar e ir te ver, quero tudo com voce, vc é a minha motivação bebee, faço n só por mim, mas por nós. VAMOS CONSEGUIR BEBE, FOFINHA, JUNTOS TEREMOS UM FUTURO FODA MEU AMOR, EU QUERO TE ENCHER O SACO TODOS OS DIAS DA MINHA, TODOS OS DIAS CONVERSAR COM VOCE, TE BEIJAR TE ABRAÇAR, ARRUMAR NOSSA CASINHA, CUIDAR DA NOSSA CASA, DOS NOSSOS GATOS. EU TE AMO MAIS QUE TUDO MEU AMORRR.</p>
                 </div>
                 
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 13/08</h2>
-                    <p class="text-gray-700">BOA NOITE MEU AMORR, ACABEI DE CHEGAR EM CASA E N TENHO PALAVRAS PRA DESCREVER ESSES DAIS COM VOCEE, FOI MT GOSTOSOO, só hoje q tivemos um mini conflito mas foi resolvido, MAS DE RESTO FOI MT BOMM, ESTAMOS EM SINTONIA DNVV EU DIRIAA,
-                    E SEI Q ISSO VAI DURAR MUITOOOOO, PQ ESTAMOS BEMM AMORRR. Eu te amo mais q tudo meu amor, e quero q tudo sempre esteja na melhor fase possivel, temos baixas e temos almas, mas sempre estamos juntos, e o importante é termos um ao outro, voce siginifica
-                    tudo pra mim meu amor, vc me deixa completo, sem voce eu n consigo ser nada, eu quero viver o mundo com voce, quero ter uma vida ao seu lado, e nao ao lado de mais ngm, eu só preciso de voce ate a morte meu amor, espero q vc pense o msm, pq vou fazer de tudo
-                    para te ter ao meu lado para sempre bebe, MWA MWA LINDEZA EU TE AMO MAIS Q TUDO NESSE MUNDOO.</p>
-                </div>
-                
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 16/08</h2>
-                    <p class="text-gray-700">BOMMMM DIAAA MEU AMORRR, acabei de ligar o pc e vim atualizar o muralll amorzãooooo, enfim, EU AMEI ESSES ULTIMOS DIAS AMORRR, A GENTE FICOU COM MT TEMPO DE QUALIDADE E NEM DISCUTIMOS NEM NADA AMORRR, EU TE AMO DEMAISSSSS
-                    BEBEZONAA, QUERO JA DNV UM FIM DE SEMANA COMO ESSEEE. Por tanto bebe, eu queria dizer q msm sem brigarmos eu errei algumas vezes, tipo na hora q vc tava dirigindo, de ter ficado te barulhando quando tava dirigindo, mas enfim, me desculpa por todos os erros
-                    que eu cometi durante este tempo, espero q n tenha estragado o dia para voce, mas pra mim foi o melhor final de semana possivel meu amor, eu quero poder vivenciar isso sempre com voce, vivenciar momentos bons e ruins meu amor, construir nosso futuro a partir
-                    de qm realmente somos bebee, estou dedicado para construir um futuro bons pra gente, agr mais ainda me dedicando pra estudar e ser util meu amor. E tudo isso graças a voce meu amor, de fato a pessoa mais importante pra minha vida é você amor, voce me fez
-                    acordar pra vida e entender diversas coisas, e eu n quero te perder por nada meu bem, vivo em constante evolução ao seu lado, e quero fazer tudo isso dar frutos, pra eu cuidar de voce, amar voce, e viver tudo ao seu lado, vc é a minha familia amor, a nossa
-                    familia.</p>
-                </div>
-                
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 17/08</h2>
-                    <p class="text-gray-700">PARA FINALIZAR O DIA MEU AMOR, queria dizer q eu amei o dia de hoje minha bebezinhaa, amei a surpresa q vc me fezz, e me sinto cada vez mais amado amor, msm com discussoes bobas, a gente ainda mantem um ritmo bom, estamos rindo
-                    juntos, se amando de fato, msm com momentos assim n se ofuscamos, e creio q estamos em um bom balanço, e logo melhor ainda quando eu sarar completamente da cirurgia, falta pouco bebe, só mais 10 dias no momento q eu escrevo, mas logo 9, eu te amo mais q tudo
-                    meu amor, queria deixar claro q nunca vou te abandonar, nunca mesmo, voce é tudo para mim e farei de tudo para conseguirmos tudo q sonhamos e queremos conquistas, só me vejo com vida, estando ao seu lado. MWAAA EU TE AMO DEMAISS.</p>
+                <!-- Nota 17 -->
+                <div class="relative bg-pink-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-1 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-pink-600 mb-3 font-bold mt-2 text-center">20/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOA NOITEEE MEU AMORRR, ESTOU AQUI ESCREVENDO ISSO PQ ESTAMOS BEM DNV BEBEEE, EU TE AMO MAIS Q TUDO MEU AMORR, ME DESCULPA PELO OQ EU FIZ BEBEE, JAMAIS VOU DESISTIR DE VOCE MEU AMOR, JAMAIS MESMOOO. Mas enfim bebeee eu queria dizer q msm apos essa discussão, meu amor por vc jamais vai diminuir, eu vou fazer de tudo para ter voce comigo ate o fim da vida, sei q o momento nao é facil e as coisas são e estão pesadas bebe, mas vai passar e vamos superar essa juntos, ano q vem vou passar por isso tbm e vamos compartilhar situações semelhantes meu amor, vamos viver as mesmas coisas em ambientes um tanto quanto diferentes, mas sempre com o apoio de nós mesmos, e é isso q significa a vida em casal, essa cooperação, a luta diaria por algo q nós queremos, me perdoe por ser pessimo muitas coisas, mas vai compensar meu amor, vai valer a penaa, EU TE AMO MAIS Q TUDO NESSE MUNDO, E SEMPRE Q ESTOU SEM VOCE EU SINTO SAUDADES ABSURDAS, EU SINTO SUA FALTA MAIS DOQ TUDO MEU AMORRR.</p>
                 </div>
 
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 18/08</h2>
-                    <p class="text-gray-700">BOM DIA MEU AMORRR, TO AQUI NO SENAI TE ESCREVENDO ESSA MENSAGEM MORRENDO DE SDDS BEBEEE, QUERIA TE BUSCAR PRA TE ENCHER DE CARINHO AMORR, QUERO Q VC DESCANSE MUITAOO BEBEE, EU TE AMO MAIS Q TUDOO.
-                    Enfim bebeee, queria dizer q eu sinto muito sua falta meu amor, todos os dias, todos os momentos, queria poder viver com voce, quero trabalhar e ir te ver, quero tudo com voce, vc é a minha motivação bebee, faço n só por mim, mas por nós.
-                    VAMOS CONSEGUIR BEBE, FOFINHA, JUNTOS TEREMOS UM FUTURO FODA MEU AMOR, EU QUERO TE ENCHER O SACO TODOS OS DIAS DA MINHA, TODOS OS DIAS CONVERSAR COM VOCE, TE BEIJAR TE ABRAÇAR, ARRUMAR NOSSA CASINHA, CUIDAR DA NOSSA CASA, DOS NOSSOS GATOS.
-                    EU TE AMO MAIS QUE TUDO MEU AMORRR.</p>
+                <!-- Nota 18 -->
+                <div class="relative bg-blue-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-2 min-h-[240px] font-hand text-lg border border-blue-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-blue-600 mb-3 font-bold mt-2 text-center">24/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">EU TE AMO MEU AMORR, OBRIGADA PELO DIA DE HOJE MEU AMORR, EU AMO ESTAR COM VOCE E VIVER MOMENTOS ASSIMMM, MINHA BEBEZINHAA, QUERO SAIR COM VC TODOS OS DIAS DA VIDA, QUERO TE MIMAR TODOS OS DIAS DA VIDA MEU AMORRR. Eu amo cada segundo ao seu lado, faz um tempinho q n falo algo aqui, então queria dizer um pouco sobre esses dias. Por mais dificil q seja o momento meu amor, saiba q de verdade q eu jamais vou desistir de voce meu amor, oq seria da terra se o sol parasse de brilhar. Eu penso na gente dessa forma, vc é o meu sol amor, ou dependendo da interpretação pode ser ao contrario, mas eu jamais vou desistir de voce, se eu for o sol, jamais vou parar de te esquentar, meu abraço sempre sera sua casa, seu aconchego independente doq acontecer meu bem, vc é tudo q eu mais desejo na vida, e n vou desperdiçar a vida ao seu lado, pq é tudo q eu mais almejo meu bem, eu te amo com tudo q eu tenho e posso ter bebe. Continue sendo essa luz q ilumina minha vida, e eu jamais pararei de ser o sol que esquenta seus dias.</p>
                 </div>
 
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 20/08</h2>
-                    <p class="text-gray-700">BOA NOITEEE MEU AMORRR, ESTOU AQUI ESCREVENDO ISSO PQ ESTAMOS BEM DNV BEBEEE, EU TE AMO MAIS Q TUDO MEU AMORR, ME DESCULPA PELO OQ EU FIZ BEBEE, JAMAIS VOU DESISTIR DE VOCE MEU AMOR, JAMAIS MESMOOO. Mas enfim bebeee
-                    eu queria dizer q msm apos essa discussão, meu amor por vc jamais vai diminuir, eu vou fazer de tudo para ter voce comigo ate o fim da vida, sei q o momento nao é facil e as coisas são e estão pesadas bebe, mas vai passar e vamos superar essa juntos,
-                    ano q vem vou passar por isso tbm e vamos compartilhar situações semelhantes meu amor, vamos viver as mesmas coisas em ambientes um tanto quanto diferentes, mas sempre com o apoio de nós mesmos, e é isso q significa a vida em casal, essa cooperação,
-                    a luta diaria por algo q nós queremos, me perdoe por ser pessimo muitas coisas, mas vai compensar meu amor, vai valer a penaa, EU TE AMO MAIS Q TUDO NESSE MUNDO, E SEMPRE Q ESTOU SEM VOCE EU SINTO SAUDADES ABSURDAS, EU SINTO SUA FALTA MAIS DOQ TUDO MEU AMORRR.</p>
+                <!-- Nota 19 -->
+                <div class="relative bg-yellow-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-3 min-h-[240px] font-hand text-lg border border-yellow-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-yellow-600 mb-3 font-bold mt-2 text-center">25/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOA NOITE MEU AMORRRR, sei que voce ficou brava nessas ultimas horas, por coisas q eu fiz sendo burro e desatento, me desculpe de verdade por esses erros idiotas, o do tik tok eu to tentando de tudo pra arrumar meu amor, mas n vou desistir bebe, msm q n consiga arrumar hoje exatamente, vou tentar resolver, mas enfim, oq aconteceu hoje n vai mais acontecer, como eu falei, vou tentar sempre percorrer o menor tempo possivel tomando banho, para fins futuros e atuais meu amor, ja q futuramente é capaz q eu pague as contas, tenho q me consientizar pra n torrar tudo q eu tenho, mas obrigada pelo aviso amor, agora vou aplicar isso com mais certeza e firmeza, EU TE AMO MAIS Q TUDO MEU AMORRR, nunca vou desistir de nós meu amor, e vou sempre te ouvir, mesmo q vc esteja brava eu vou ter calma e paciencia pra te ouvir e melhorar minhas ações meu amor, jamais pense q vou desistir quando vc me bloquear ou coisa do tipo meu amor, eu sou um monge do outro lado da tela KAKAKKAK, mas é isso meu amor, vc ta na facul agora então só vai ver dps, mas só pra finalizar, sabia q vc me orgulha todos os dias por ser qm vc é meu amor? conseguir manter essa rotina e ser forte para aguentar e ver os lados bons da vida, n é para qualquer um meu amor, eu me inspiro em voce e sempre vou. Eu te amo com tudo que eu tenho.</p>
                 </div>
 
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 24/08</h2>
-                    <p class="text-gray-700">EU TE AMO MEU AMORR, OBRIGADA PELO DIA DE HOJE MEU AMORR, EU AMO ESTAR COM VOCE E VIVER MOMENTOS ASSIMMM, MINHA BEBEZINHAA, QUERO SAIR COM VC TODOS OS DIAS DA VIDA, QUERO TE MIMAR TODOS OS DIAS DA VIDA MEU AMORRR. Eu amo cada
-                    segundo ao seu lado, faz um tempinho q n falo algo aqui, então queria dizer um pouco sobre esses dias. Por mais dificil q seja o momento meu amor, saiba q de verdade q eu jamais vou desistir de voce meu amor, oq seria da terra se o sol parasse de brilhar.
-                    Eu penso na gente dessa forma, vc é o meu sol amor, ou dependendo da interpretação pode ser ao contrario, mas eu jamais vou desistir de voce, se eu for o sol, jamais vou parar de te esquentar, meu abraço sempre sera sua casa, seu aconchego independente doq
-                    acontecer meu bem, vc é tudo q eu mais desejo na vida, e n vou desperdiçar a vida ao seu lado, pq é tudo q eu mais almejo meu bem, eu te amo com tudo q eu tenho e posso ter bebe. Continue sendo essa luz q ilumina minha vida, e eu jamais pararei de ser o sol
-                    que esquenta seus dias.</p>
+                <!-- Nota 20 -->
+                <div class="relative bg-purple-50 rounded-2xl p-6 shadow-md note-hover-effect rotate-1 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-purple-500 mb-3 font-bold mt-2 text-center">27/08</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">OI BEBEE, UM DIA ANTES DO NOSSO FINAL DE SEMANA PREMIADO BEBEE, EU TO COM MT SDDS E DE VERDADE, MUITO FELIZ POR ISSO PODER ESTAR ACONTECENDO, EU SEMPRE QUIS Q VC DORMISSE AQUI E FINALMENTE VAI ACONTECER, POR MAIS Q AINDA TENHA O SENAI AMANHA E O SEU TRABALHO, VAMOS CONSEGUIR APROVEITAR MUITO JUNTOS ESSE FINAL DE SEMANA TODOO, JUNTINHOS E COMPARTILHANDO EXPERIENCIAS NOVAS Q JAMAIS VIVEMOS ANTESSS. E PRA MIM ISSO É INCRIVELLLL, VAMOS ESTAR SAINDO MASTER DA ROTINA QUERENDO OU NAO FAZENDO ALGO REALMENTE NOVO, E Q VAI DEMORAR PRA ACONTECER DNVVV, QUERO FAZER DIVERSAS COM VC AQUI, PASSAR ESSE TEMPO APROVEITANDO COM VOCE, E TE INCLUINDO DE VERDADE NA MINHA FAMILIA, CHEGANDO AO PONTO DE MIMIR AQUI DPS DE 1 ANO E 5 MESES E ALGUNS DIASSS BEBEE. eu só tenho a agradecer por vc existir meu amor, vc me deu os dias mais felices de toda minha vida, sem voce eu n seria nada, eu seria patetico, mas ao seu lado eu me sinto vivo, me sinto com um significado, e uma vontade de seguir, e de estar sempre ao seu lado, eu te amo mais que tudo meu amor.</p>
                 </div>
 
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 25/08</h2>
-                    <p class="text-gray-700">BOA NOITE MEU AMORRRR, sei que voce ficou brava nessas ultimas horas, por coisas q eu fiz sendo burro e desatento, me desculpe de verdade por esses erros idiotas, o do tik tok eu to tentando de tudo pra arrumar meu amor,
-                    mas n vou desistir bebe, msm q n consiga arrumar hoje exatamente, vou tentar resolver, mas enfim, oq aconteceu hoje n vai mais acontecer, como eu falei, vou tentar sempre percorrer o menor tempo possivel tomando banho, para fins futuros e atuais meu amor,
-                    ja q futuramente é capaz q eu pague as contas, tenho q me consientizar pra n torrar tudo q eu tenho, mas obrigada pelo aviso amor, agora vou aplicar isso com mais certeza e firmeza, EU TE AMO MAIS Q TUDO MEU AMORRR, nunca vou desistir de nós meu amor, e vou sempre
-                    te ouvir, mesmo q vc esteja brava eu vou ter calma e paciencia pra te ouvir e melhorar minhas ações meu amor, jamais pense q vou desistir quando vc me bloquear ou coisa do tipo meu amor, eu sou um monge do outro lado da tela KAKAKKAK, mas é isso meu amor, vc ta na facul 
-                    agora então só vai ver dps, mas só pra finalizar, sabia q vc me orgulha todos os dias por ser qm vc é meu amor? conseguir manter essa rotina e ser forte para aguentar e ver os lados bons da vida, n é para qualquer um meu amor, eu me inspiro em voce e sempre vou. Eu te amo com tudo que eu tenho.</p>
+                <!-- Nota 21 -->
+                <div class="relative bg-pink-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-2 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-pink-600 mb-3 font-bold mt-2 text-center">01/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">OIII MEU AMORRR, PASSAMOS DO MEU ANIVERSARIO E SÓ TENHO UAM COISA A DIZER, MUITO OBRIGADO POR TUDO, você é a pessoa mais importante da minha vida, eu n quero te perder por nada nesse mundo, eu almejo um futuro ao seu lado e farei de tudo para ter isso, hoje ainda vou dar uma estudada, fazer um exercicios basicos pra exercitar a pratica e de forma recompensadora e n mt puxada, pra ir fazendo isso aos poucos, eu vejo voce na minha vida ate o fim, minha familia ve voce comigo ate o fim, nós seremos eternos amor, eu nunca vou desistir de voce, eu nunca vou deixar de tentar, eu sei q é agora é dificil, mas vamos encontrar equilibrio, eu te amo mais que tudo nesse universo meu amor, e eu n to nem brincando, vc é a minha prioridade maxima.</p>
                 </div>
 
-                  <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 27/08</h2>
-                    <p class="text-gray-700">OI BEBEE, UM DIA ANTES DO NOSSO FINAL DE SEMANA PREMIADO BEBEE, EU TO COM MT SDDS E DE VERDADE, MUITO FELIZ POR ISSO PODER ESTAR ACONTECENDO, EU SEMPRE QUIS Q VC DORMISSE AQUI E FINALMENTE VAI ACONTECER, POR MAIS Q AINDA
-                    TENHA O SENAI AMANHA E O SEU TRABALHO, VAMOS CONSEGUIR APROVEITAR MUITO JUNTOS ESSE FINAL DE SEMANA TODOO, JUNTINHOS E COMPARTILHANDO EXPERIENCIAS NOVAS Q JAMAIS VIVEMOS ANTESSS. E PRA MIM ISSO É INCRIVELLLL, VAMOS ESTAR SAINDO MASTER DA ROTINA QUERENDO OU NAO
-                    FAZENDO ALGO REALMENTE NOVO, E Q VAI DEMORAR PRA ACONTECER DNVVV, QUERO FAZER DIVERSAS COM VC AQUI, PASSAR ESSE TEMPO APROVEITANDO COM VOCE, E TE INCLUINDO DE VERDADE NA MINHA FAMILIA, CHEGANDO AO PONTO DE MIMIR AQUI DPS DE 1 ANO E 5 MESES E ALGUNS DIASSS BEBEE.
-                    eu só tenho a agradecer por vc existir meu amor, vc me deu os dias mais felices de toda minha vida, sem voce eu n seria nada, eu seria patetico, mas ao seu lado eu me sinto vivo, me sinto com um significado, e uma vontade de seguir, e de estar sempre ao seu lado, eu te amo mais que tudo meu amor.</p>
+                <!-- Nota 22 -->
+                <div class="relative bg-blue-50 rounded-2xl p-6 shadow-md note-hover-effect rotate-3 min-h-[240px] font-hand text-lg border border-blue-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-blue-500 mb-3 font-bold mt-2 text-center">06/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Estou escrevendo isso após chegar em casa meu amor, e quero pedir desculpas pelo oq aconteceu, nao quero que isso se repita e te afirmo, jamais vai se repetir, escrevo isso para te dizer que nao vai acabar aqui, eu nunca vou desistir de nós, jamais vou desistir de tentar e fazer por nós, e não só por nós, por voce, por mim, por um futuro melhor meu amor, eu imagino o mundo ao seu lado, nao tem nada q chegue aos seus pes, voce é a minha vida e sempre sera, quero te recompensar por todos esforços q vc ja fez por mim, sejam psicologicos, fisicos e financeiros, quero retornar tudo a voce, pq vc merece mais doq qualquer outra pessoa meu amor, n é só por mim, é por voce, vc me motiva a continuar sonhando, pq vc é o meu sonho, e eu n vou parar nunca de querer alcançar seus sonhos e meus, pq é tudo sobre nós, sobre voce, eu tenho vocações e vontade na vida, mas nenhuma ficara acima de voce meu amor, eu te amo mais que tudo nessa vida, vc é o meu tesouro em vida.</p>
                 </div>
 
-                  <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 01/09</h2>
-                    <p class="text-gray-700">OIII MEU AMORRR, PASSAMOS DO MEU ANIVERSARIO E SÓ TENHO UAM COISA A DIZER, MUITO OBRIGADO POR TUDO, você é a pessoa mais importante da minha vida, eu n quero te perder por nada nesse mundo, eu almejo um futuro ao seu lado e farei de tudo
-                    para ter isso, hoje ainda vou dar uma estudada, fazer um exercicios basicos pra exercitar a pratica e de forma recompensadora e n mt puxada, pra ir fazendo isso aos poucos, eu vejo voce na minha vida ate o fim, minha familia ve voce comigo ate o fim, nós seremos eternos amor,
-                    eu nunca vou desistir de voce, eu nunca vou deixar de tentar, eu sei q é agora é dificil, mas vamos encontrar equilibrio, eu te amo mais que tudo nesse universo meu amor, e eu n to nem brincando, vc é a minha prioridade maxima.</p>
-                </div>
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 06/09</h2>
-                    <p class="text-gray-700">Estou escrevendo isso após chegar em casa meu amor, e quero pedir desculpas pelo oq aconteceu, nao quero que isso se repita e te afirmo, jamais vai se repetir, escrevo isso para te dizer que nao vai acabar aqui, eu nunca vou
-                    desistir de nós, jamais vou desistir de tentar e fazer por nós, e não só por nós, por voce, por mim, por um futuro melhor meu amor, eu imagino o mundo ao seu lado, nao tem nada q chegue aos seus pes, voce é a minha vida e sempre sera, quero te 
-                    recompensar por todos esforços q vc ja fez por mim, sejam psicologicos, fisicos e financeiros, quero retornar tudo a voce, pq vc merece mais doq qualquer outra pessoa meu amor, n é só por mim, é por voce, vc me motiva a continuar sonhando, pq vc
-                    é o meu sonho, e eu n vou parar nunca de querer alcançar seus sonhos e meus, pq é tudo sobre nós, sobre voce, eu tenho vocações e vontade na vida, mas nenhuma ficara acima de voce meu amor, eu te amo mais que tudo nessa vida, vc é o meu tesouro em vida.</p>
-                </div>
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 10/09</h2>
-                    <p class="text-gray-700">Bom dia, Boa tarde, Boa noite, eu to aqui bebe pra te dizer que nós vamos conseguir, vai dar tudo certo, sei das minhas falhas e erros, e vou conseguir te re-conquistar, te fazer acreditar em mim, fazer voce granhar confiança em mim,
-                    para fazer as coisas de forma sozinha, pra ver eu fazendo algo de fato, a rotina de estudos creio q esteja me ajudando muito, e logo vai dar resultados. Sem contar que, vou sempre ir te avisando de tudo possivel meu amor, vou te informar de tudo, como não tenho
-                    ainda uma super rotina, vou ir contando as pequenas coisas q acontecem, ate as maiores, todos os dias meu amor, coloquei o lembrete em nosso calendario, então nao esquecerei meu amor, eu te amo mais q tudoe farei de tudo para nao perder voce, pra mim mesmo. </p>
-                </div>
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 11/09</h2>
-                    <p class="text-gray-700">BOM DIA MEU AMORRR, EU TO COM MT SDDSSS, TO ESCREVENDO ISSO AQUI NO SENAI BEBEE, EU TE AMO MAIS Q TUDOO, HOJE SERA UM DIA BOM MEU AMOR, VAMOS RELAXAR E FICAR TRANQUILOS, QUERO MELHORAR SEU DIA O MAXIMO POSSIVEL BEBEEE, VOU 
-                    FAZER DE TUDO PARA ISSOOO. E eu te garanto bebee, vou te fazer uma massagem gostosa hojeee, quero q vc realmente relaxee, enquanto jogamos e ficamos de boaaaa, fofurinha to com mt sddssss, PERFEITA MARAVILHOSAA. Vou te recompensar pelo oq vc passou ontem meu amor
-                    vc n merece nada disso meu amor, vai dar tudo certo e serei o seu homem amor, até o fim dos tempos.</p>
-                </div>
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 13/09</h2>
-                    <p class="text-gray-700">OI MEU AMORRRRRRRR, TUDO BEMMMM BEBEZONAAAAAA, mesmo depois desse final de semana meio turbulento, eu queria dizer q eu te amo mais q tudo nesse mundo, nao quero te perder por nada nesse mundo, eu vou fazer tudo por nós, por voce e mim, 
-                    eu quero q isso de certo, e vou me esforçar ao maximo para te compensar por tudo q vem acontecendo, vc merece a minha melhor versão e o melhor eu, e vou fazer isso meu bem, construir um futuro ao seu lado é o meu desejo, e vou fazer isso dar certo bebe, eu te amo muito meu amor, vc é a minha esposa, para sempre
-                    (SEREMOS FELIZES PARA SEMRPE SABIA)</p>
-                </div>
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 14/09</h2>
-                    <p class="text-gray-700">BOM DIA, BOA TARDE, BOA NOITE MEU AMORRR (acho q vou usar isso de entrada apartir de agora einn), TUDO BEM BEBEZONAA, to aqui escrevendo sua mensagem diaria pra te lembrar q eu te amo mais q tudo meu amor, eu posso no dia de hoje
-                    ter faltado na escola, mas n vou faltar em te ver meu amor, eu quero mais q tudo estar presente em tudo q vc fizer, para ja acostumar para nosso futuro, e sem contar q fiz coisas hoje, como o mapa e depois vou fazer o simulado, e vou ir fazendo todos os dias,
-                    afinal eu tenho q te entregar o melhor eu, e quero q isso seja real, quero construir um futuro ao seu lado, eu n vejo um mundo sem nós dois juntos, eu sinto q nós seremos eternos bebe, e eu só quero o melhor, ent serei melhor, eu te amo meu amor, amo mais que tudo mesmo.</p>
-                </div>
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 15/09</h2>
-                    <p class="text-gray-700">BOM DIA, BOA TARDEZONA E NOITEEE BEBEZONAA, TO AQUI NO SENAI ESCREVENDO ESSA MENSAGEM PRA TE RELEMBRAR QUE EU TE AMO MAIS Q TUDO NESSE MUNDOO, vou te avisar de tudinho bebee, vou virar seu vlogger pessoal e mostrar minha rotinaa,
-                    seria legal se vc tbm virasse minha blogueira KAKAKKAKA, mas enfimm bebee, TO COM MT SDDS E QUERO TE VER LOGOO, N SUPORTO ESSE TEMPO LONGEE, ME ADOECEEE, QUERO ESTAR SEMPRE COM VOCEE, FOFURINHAA, VOU CASAR COM VOCEE, PENSANDO NO NOSSO FUTURO, SO TENHO A DIZER
-                    QUE VAMOS SER FELIZES LONGE DESSE MUQUIFO DE BRASIL MEU AMOR, VAI DAR TUDO CERTO, MINHA DEUSAAA</p>
-                </div>
-                 <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 17/09</h2>
-                    <p class="text-gray-700">OI MEU AMOR TUDO BEMMM, mudamos againn mas vou usar o outro tbmm, mas enfim meu amorr, eu gostei muito desses dois dias juntoss, acho q foi importante pra gente esses dois dias, para relaxarmos, e principalmente por causa do
-                    psiquiatra, eu acredito q a partir de agora só vem melhoras pela frente, mais estabilidade e paz, mes q vem começamos a aplicar o negocio de sair depois do seu trabalho, e dai vemos na pratica se faz bem, eu particularmente acredito q simmm, e 
-                    tambem acho q vai te fazer muito bem, tudo isso num geral acredito q va te fazer muito bem meu amor, eu te amo muito e vou te apoiar em tudo, pode contar comigo para oq der e vier. Eu te amo mais que tudo</p>
-                </div>
-                <div class="relative note bg-pink-50 rounded-xl p-6 shadow-note rotate-[-4deg] min-h-[220px]">
-                    <div class="pin"></div>
-                    <h2 class="text-2xl text-pink-500 mb-3"> 18/09</h2>
-                    <p class="text-gray-700">BOM DIA MEU AMORR, COMO VC TA MEU BEMM, ontem foi turbulento mas tem tudo para melhorar meu bem, eu me comprometo em cuidar de voce e deixar voce em paz, te tranquilizar e tirar esse peso das suas costas, é pra ser um dia tranquilo
-                    que voce nao precisa se preocupar com nada meu bem, quero só seu bem e seu descanso, voce merece mais doq qualquer um meu bem, relaxe e aproveite bebe, eu te amo mais q tudo fofurinhaa, vou estar sempre aqui com voce pra te ajudar, voce é minha futura esposa,
-                    então te tratarei como uma princesa, assim como sempre farei, eu te amo mais q tudo minha deusa, voce é tudo para mim, eu nao viveria sem voce, de jeito nenhum.</p>
+                <!-- Nota 23 -->
+                <div class="relative bg-green-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-1 min-h-[240px] font-hand text-lg border border-green-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-green-600 mb-3 font-bold mt-2 text-center">10/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">Bom dia, Boa tarde, Boa noite, eu to aqui bebe pra te dizer que nós vamos conseguir, vai dar tudo certo, sei das minhas falhas e erros, e vou conseguir te re-conquistar, te fazer acreditar em mim, fazer voce granhar confiança em mim, para fazer as coisas de forma sozinha, pra ver eu fazendo algo de fato, a rotina de estudos creio q esteja me ajudando muito, e logo vai dar resultados. Sem contar que, vou sempre ir te avisando de tudo possivel meu amor, vou te informar de tudo, como não tenho ainda uma super rotina, vou ir contando as pequenas coisas q acontecem, ate as maiores, todos os dias meu amor, coloquei o lembrete em nosso calendario, então nao esquecerei meu amor, eu te amo mais q tudoe farei de tudo para nao perder voce, pra mim mesmo.</p>
                 </div>
 
+                <!-- Nota 24 -->
+                <div class="relative bg-pink-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-2 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-pink-600 mb-3 font-bold mt-2 text-center">11/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA MEU AMORRR, EU TO COM MT SDDSSS, TO ESCREVENDO ISSO AQUI NO SENAI BEBEE, EU TE AMO MAIS Q TUDOO, HOJE SERA UM DIA BOM MEU AMOR, VAMOS RELAXAR E FICAR TRANQUILOS, QUERO MELHORAR SEU DIA O MAXIMO POSSIVEL BEBEEE, VOU FAZER DE TUDO PARA ISSOOO. E eu te garanto bebee, vou te fazer uma massagem gostosa hojeee, quero q relaxee, enquanto jogamos e ficamos de boaaaa, fofurinha to com mt sddssss, PERFEITA MARAVILHOSAA. Vou te recompensar pelo oq vc passou ontem meu amor vc n merece nada disso meu amor, vai dar tudo certo e serei o seu homem amor, até o fim dos tempos.</p>
+                </div>
 
+                <!-- Nota 25 -->
+                <div class="relative bg-purple-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-3 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-purple-600 mb-3 font-bold mt-2 text-center">13/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">OI MEU AMORRRRRRRR, TUDO BEMMMM BEBEZONAAAAAA, mesmo depois desse final de semana meio turbulento, eu queria dizer q eu te amo mais q tudo nesse mundo, nao quero te perder por nada nesse mundo, eu vou fazer tudo por nós, por voce e mim, eu quero q isso de certo, e vou me esforçar ao maximo para te compensar por tudo q vem acontecendo, vc merece a minha melhor versão e o melhor eu, e vou fazer isso meu bem, construir um futuro ao seu lado é o meu desejo, e vou fazer isso dar certo bebe, eu te amo muito meu amor, vc é a minha esposa, para sempre (SEREMOS FELIZES PARA SEMRPE SABIA)</p>
+                </div>
 
+                <!-- Nota 26 -->
+                <div class="relative bg-yellow-100 rounded-2xl p-6 shadow-md note-hover-effect rotate-1 min-h-[240px] font-hand text-lg border border-yellow-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-yellow-600 mb-3 font-bold mt-2 text-center">14/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA, BOA TARDE, BOA NOITE MEU AMORRR (acho q vou usar isso de entrada apartir de agora einn), TUDO BEM BEBEZONAA, to aqui escrevendo sua mensagem diaria pra te lembrar q eu te amo mais q tudo meu amor, eu posso no dia de hoje ter faltado na escola, mas n vou faltar em te ver meu amor, eu quero mais q tudo estar presente em tudo q vc fizer, para ja acostumar para nosso futuro, e sem contar q fiz coisas hoje, como o mapa e depois vou fazer o simulado, e vou ir fazendo todos os dias, afinal eu tenho q te entregar o melhor eu, e quero q isso seja real, quero construir um futuro ao seu lado, eu n vejo um mundo sem nós dois juntos, eu sinto q nós seremos eternos bebe, e eu só quero o melhor, ent serei melhor, eu te amo meu amor, amo mais que tudo mesmo.</p>
+                </div>
+
+                <!-- Nota 27 -->
+                <div class="relative bg-blue-100 rounded-2xl p-6 shadow-md note-hover-effect -rotate-2 min-h-[240px] font-hand text-lg border border-blue-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">💖</div>
+                    <h2 class="text-3xl text-blue-600 mb-3 font-bold mt-2 text-center">15/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA, BOA TARDEZONA E NOITEEE BEBEZONAA, TO AQUI NO SENAI ESCREVENDO ESSA MENSAGEM PRA TE RELEMBRAR QUE EU TE AMO MAIS Q TUDO NESSE MUNDOO, vou te avisar de tudinho bebee, vou virar seu vlogger pessoal e mostrar minha rotinaa, seria legal se vc tbm virasse minha blogueira KAKAKKAKA, mas enfimm bebee, TO COM MT SDDS E QUERO TE VER LOGOO, N SUPORTO ESSE TEMPO LONGEE, ME ADOECEEE, QUERO ESTAR SEMPRE COM VOCEE, FOFURINHAA, VOU CASAR COM VOCEE, PENSANDO NO NOSSO FUTURO, SO TENHO A DIZER QUE VAMOS SER FELIZES LONGE DESSE MUQUIFO DE BRASIL MEU AMOR, VAI DAR TUDO CERTO, MINHA DEUSAAA</p>
+                </div>
+
+                <!-- Nota 28 -->
+                <div class="relative bg-pink-50 rounded-2xl p-6 shadow-md note-hover-effect rotate-2 min-h-[240px] font-hand text-lg border border-pink-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🎀</div>
+                    <h2 class="text-3xl text-pink-500 mb-3 font-bold mt-2 text-center">17/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">OI MEU AMOR TUDO BEMMM, mudamos againn mas vou usar o outro tbmm, mas enfim meu amorr, eu gostei muito desses dois dias juntoss, acho q foi importante pra gente esses dois dias, para relaxarmos, e principalmente por causa do psiquiatra, eu acredito q a partir de agora só vem melhoras pela frente, mais estabilidade e paz, mes q vem começamos a aplicar o negocio de sair depois do seu trabalho, e dai vemos na pratica se faz bem, eu particularmente acredito q simmm, e tambem acho q vai te fazer muito bem, tudo isso num geral acredito q va te fazer muito bem meu amor, eu te amo muito e vou te apoiar em tudo, pode contar comigo para oq der e vier. Eu te amo mais que tudo</p>
+                </div>
+
+                <!-- Nota 29 -->
+                <div class="relative bg-purple-50 rounded-2xl p-6 shadow-md note-hover-effect -rotate-1 min-h-[240px] font-hand text-lg border border-purple-200">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-4xl pin-emoji z-20">🌸</div>
+                    <h2 class="text-3xl text-purple-500 mb-3 font-bold mt-2 text-center">18/09</h2>
+                    <p class="text-gray-800 leading-relaxed text-center">BOM DIA MEU AMORR, COMO VC TA MEU BEMM, ontem foi turbulento mas tem tudo para melhorar meu bem, eu me comprometo em cuidar de voce e deixar voce em paz, te tranquilizar e tirar esse peso das suas costas, é pra ser um dia tranquilo que voce nao precisa se preocupar com nada meu bem, quero só seu bem e seu descanso, voce merece mais doq qualquer um meu bem, relaxe e aproveite bebe, eu te amo mais q tudo fofurinhaa, vou estar sempre aqui com voce pra te ajudar, voce é minha futura esposa, então te tratarei como uma princesa, assim como sempre farei, eu te amo mais q tudo minha deusa, voce é tudo para mim, eu nao viveria sem voce, de jeito nenhum.</p>
+                </div>
 
             </div>
-
         </div>
 
     </div>
